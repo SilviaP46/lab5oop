@@ -48,8 +48,28 @@ void Repo::show() {
 
 }
 
+void Repo::search(string genre) {
+	for (int i = 0; i < Movie_List.size(); i++) {
+		if (Movie_List.at(i).get_Genre() == genre)
+			Movie_List.at(i).print();
+	}
+			
+
+}
 
 
 
+void Repo::create_list(string title, string genre, int year, int likes, string trailer)
+{
+	Film f;
+	f.set_Title(title);
+	f.set_Genre(genre);
+	f.set_Year(year);
+	f.set_Likes(likes);
+	f.set_Trailer(trailer);
+	Movie_List.push_back(f);
+}
+
+//
 
 Repo::~Repo() {}

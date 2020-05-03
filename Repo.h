@@ -9,6 +9,7 @@ class Repo
 public:
 	friend class Film;
 	vector<Film> Movie_List;
+	vector<Film> WatchList;
 
 
 public:
@@ -18,6 +19,8 @@ public:
 	void delete_Movie(string title);
 	void update_Movie_likes(string name, int p);
 	void show();
+	void search(string genre);
+	void create_list(string title, string genre, int year, int likes, string trailer);
 
 	~Repo();
 

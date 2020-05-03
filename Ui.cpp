@@ -44,6 +44,7 @@ void Ui::Menu_Admin() {
 		cout << "2-->Delete movie" << endl;
 		cout << "3-->Update number of likes" << endl;
 		cout << "4-->List of movies" << endl;
+		cout << "5-->Return to main menu!" << endl;
 		cout << "Your choice:";
 		cin >> choice;
 
@@ -65,8 +66,10 @@ void Ui::Menu_User() {
 		system("CLS");
 		cout << "User Mode!"<< endl;
 		cout << "Enter your choice or press 0 to exit!" << endl;
-		cout << "1-->Aaaaaa" << endl;
+		cout << "1-->Show movies by genre" << endl;
 		cout << "2-->bbbbbbbb" << endl;
+		//////////////////
+		cout << "5-->Return to main menu!" << endl;
 		cout << "Your choice:";
 		cin >> choice;
 

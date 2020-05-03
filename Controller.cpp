@@ -9,11 +9,26 @@ using namespace std;
 
 Controller::Controller() {}
 
+void innit_list() {
+	Repo f;
+	f.create_list("ana", "horror", 2004, 2991, "https://www.google.com/webhp?hl=ro&sa=X&ved=0ahUKEwjnxo6GjojpAhWUtXEKHX1JAycQPAgH");
+	f.create_list("asj", "comedie", 2009, 3647, "www.cs/1");
+	f.create_list("Iron", "comedie", 2013, 9585, "www.cs/2");
+	f.create_list("Captain", "actiune", 2017, 2141, "www.cs/3");
+	f.create_list("Conasu", "horror", 2019, 1235, "https://www.youtube.com/");
+	f.create_list("Eu", "thriller", 1999, 912, "www.cs/5");
+	f.create_list("Vremea", "aventura", 2005, 1257, "www.cs/6");
+	f.create_list("Singur!", "comedie", 2015, 4542, "www.cs/7");
+	f.create_list("Slab.", "dragoste", 2011, 1234, "www.cs/8");
+
+}
+
 void Controller::ui_menu(int choice) {
 
 	Ui g;
 
 	int op = choice;
+	innit_list();
 
 	switch (op) {
 
@@ -45,6 +60,7 @@ void Controller::ui_menu(int choice) {
 void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 
 	Film* movie;
+	Ui g;
 	int year, likes, op = choice,nr;
 	string title, trailer, genre;
 
@@ -133,6 +149,10 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 		system("PAUSE");
 		break;
 
+
+	case 5:
+
+		g.Menu();
 	}
 
 
@@ -141,6 +161,38 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 
 void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 
-	cout << "User mode!" << endl;
+	Film* movie;
+	Ui g;
+	int year, likes, op = choice, nr;
+	string title, trailer, genre;
+
+	switch (op) {
+
+
+	case 0:
+
+		cout << "Bye Bye!";
+
+		system("PAUSE");
+
+	case 1:
+		cout << "Genre?"<<endl;
+		cin >> genre;
+
+		r->search(genre);
+
+		system("PAUSE");
+		break;
+
+	////////// case 2,3,4
+
+	case 5:
+
+		g.Menu();
+
+
+		system("PAUSE");
+		break;
+	}
 
 }
