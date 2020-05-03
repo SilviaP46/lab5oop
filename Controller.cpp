@@ -86,7 +86,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 		cin >> trailer;
 
 		movie = new Film(title, genre, year, likes, trailer);
-		if (r->exits(title))
+		if (r->exits(title,r->Movie_List))
 		{
 			cout << "This movie already exits!" << endl;
 
@@ -107,7 +107,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 		cout << "Which movie would you like to delete?";
 		cin >> title;
 
-		if (r->exits(title) == false)
+		if (r->exits(title,r->Movie_List) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 
@@ -128,7 +128,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 		cout << "New quantity of likes" << endl;
 		cin >> nr;
 
-		if (r->exits(title) == false)
+		if (r->exits(title,r->Movie_List) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 
@@ -184,9 +184,33 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 		system("PAUSE");
 		break;
 
-	////////// case 2,3,4
 
-	case 5:
+	case 2:
+		cout << "Which movie would you like to add to your watchlist?" << endl;
+		cin >> title;
+		if (r->exits(title,r->WatchList))
+		{
+			cout << "This movie already exits!" << endl;
+
+		}
+		else {
+
+			r->add_WatchList(f);
+			int poz = r->WatchList.size() - 1;
+			r->WatchList.at(poz).print();
+		}
+	/*
+	case 3:
+		cout << "Would u like to give this film a like?"<<endl;
+		cin >> title;
+		cout << "Tasta 1 = yes"<<endl;
+		cout << "Tasta 2 = no"<<endl;
+		cout << "Press Tasta = ";
+		system("PAUSE");
+		break;
+	*/
+
+	case 4:
 
 		g.Menu();
 

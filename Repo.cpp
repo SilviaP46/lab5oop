@@ -1,13 +1,14 @@
 #include "Repo.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 Repo::Repo() {}
 
-bool Repo::exits(string title)
+bool Repo::exits(string title,vector<Film> v )
 {
-	for (int i = 0; i < Movie_List.size(); i++) {
-		if (Movie_List.at(i).get_Title() == title)
+	for (int i = 0; i < v.size(); i++) {
+		if (v.at(i).get_Title() == title)
 		{
 			return true;
 			break;
@@ -68,8 +69,97 @@ void Repo::create_list(string title, string genre, int year, int likes, string t
 	f.set_Likes(likes);
 	f.set_Trailer(trailer);
 	Movie_List.push_back(f);
+
+
 }
 
-//
+void Repo::add_WatchList(Film f)
+{
+	for (int i = 0; i <= Movie_List.size(); i++)
+		if (Movie_List.at(i).get_Title() == f.get_Title())
+			WatchList.push_back(f);
+}
+/*
+void Repo::remove_Movie(string title)
+{
+	vector<Film> aux;
+	vector<Film> aux1;
+	int ok = 0;
+	Film f;
+	string title;
+	
+	for (auto it : WatchList) 
+	{
+		if (it.set_Title() == title) ///Search the title
+		{
+			ok = 1;
+			
+			int n;
+			cin >> n;
+			if (n == 1) 
+			{
+				for (const auto& film : WatchList) 
+					if (film.set_Title() == title)
+					{
+						f.set_Title = film.set_Title.titel;
+						f.set_Genre = film.set_Genre.genre;
+						f.set_Year = film.set_Year.year;
+						f.set_Likes = film.set_Likes.likes + 1; ///When we finde the movie,we change the price
+						f.set_Trailer = film.set_Trailer.trailer;
+						aux.push_back(f);
+					}
+					else
+					{
+						f.set_Title = film.set_Title.titel;
+						f.set_Genre = film.set_Genre.genre;
+						f.set_Year = film.set_Year.year;
+						f.set_Likes = film.set_Likes.likes;
+						f.set_Trailer = film.set_Trailer.trailer;
+						aux.push_back(f);
+					}
+				WatchList = aux;//we put aux in vector WatchList
+				for (const auto& film : WatchList)
+					if (film.set_Title != title)   ///Delete the movie from WatchList
+					{
 
+						f.set_Title = film.set_Title.titel;
+						f.set_Genre = film.set_Genre.genre;
+						f.set_Year = film.set_Year.year;
+						f.set_Likes = film.set_Likes.likes;
+						f.set_Trailer = film.set_Trailer.trailer;
+						aux1.push_back(f);
+					}
+				WatchList = aux1;
+				
+			}
+
+			else
+				if (n == 2)
+				{
+					for (const auto& film : WatchList)
+						if (film.set_Title != title)
+						{
+
+							f.set_Title = film.set_Title.titel;
+							f.set_Genre = film.set_Genre.genre;
+							f.set_Year = film.set_Year.year;
+							f.set_Likes = film.set_Likes.likes;
+							f.set_Trailer = film.set_Trailer.trailer;
+							aux.push_back(f);
+						}
+					WatchList = aux1;
+					//cout << "Filmul a fost sters cu succes";
+
+				}
+				else
+					if (n != 1 && n != 2)
+						cout << "Tasta incorecta";
+		}
+
+
+	}
+	if (ok == 0)
+		cout << "Nu exista filmul";
+}
+*/
 Repo::~Repo() {}
