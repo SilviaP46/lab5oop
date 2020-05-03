@@ -78,6 +78,8 @@ void Film::set_Trailer(string trailer) {
 void Film::print()
 {
 	cout << endl << " Title: " << Title << " Genre: " << Genre << " Likes: " << Likes << " Year: " << Year << " Trailer: " << Trailer<<endl;
+
 }
+
 
 Film::~Film() {}

@@ -45,7 +45,7 @@ void Controller::ui_menu(int choice) {
 void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 
 	Film* movie;
-	int year, likes, op = choice;
+	int year, likes, op = choice,nr;
 	string title, trailer, genre;
 
 	switch (op) {
@@ -101,13 +101,41 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 			r->delete_Movie(title);
 			cout << "Movie deleted!" << endl;
 		}
-	
+
 
 		system("PAUSE");
 		break;
 
+	case 3:
+		cout << "Which movie would you like to update?";
+		cin >> title;
+		cout << "New quantity of likes" << endl;
+		cin >> nr;
+
+		if (r->exits(title) == false)
+		{
+			cout << "This movie does not exist!" << endl;
+
+		}
+		else
+		{
+			r->update_Movie_likes(title,nr);
+			cout << "Movie deleted!" << endl;
+		}
+
+		system("PAUSE");
+		break;
+
+	case 4:
+	 
+		r->show();
+
+		system("PAUSE");
+		break;
 
 	}
+
+
 }
 
 

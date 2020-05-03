@@ -16,6 +16,8 @@ public:
 	bool exits(string title);
 	void add_Movie(Film f);
 	void delete_Movie(string title);
+	void update_Movie_likes(string name, int p);
+	void show();
 
 	~Repo();
 
