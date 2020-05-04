@@ -68,7 +68,8 @@ void Ui::Menu_User() {
 		cout << "Enter your choice or press 0 to exit!" << endl;
 		cout << "1-->Show movies by genre" << endl;
 		cout << "2-->Add movie to the Watchlist" << endl;
-		//////////////////
+		cout << "3-->Remove movie from the Watchlist" << endl;
+		cout << "4-->Show movies from the Watchlist" << endl;
 		cout << "5-->Return to main menu!" << endl;
 		cout << "Your choice:";
 		cin >> choice;

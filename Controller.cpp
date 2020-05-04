@@ -144,7 +144,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 
 	case 4:
 	 
-		r->show();
+		r->show(r->WatchList);
 
 		system("PAUSE");
 		break;
@@ -164,7 +164,7 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 	Film* movie;
 	Ui g;
 	int year, likes, op = choice, nr;
-	string title, trailer, genre;
+	string title, trailer, genre, answer;
 
 	switch (op) {
 
@@ -203,8 +203,10 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 		
 
 	case 3:
-		cout << "Which movie would you like to remove from the Watchlist?"<<endl;
+		cout << "Which movie would you like to remove from the Watchlist?" << endl;
 		cin >> title;
+		cout << "Did you like the movie?" << endl;
+		cin >> answer;
 		if (r->exits(title, r->WatchList) == false)
 		{
 			cout << "This movie does not exist!" << endl;
@@ -212,7 +214,7 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 		}
 		else
 		{
-			r->remove_from_WatchList(title);
+			r->remove_from_WatchList(title, answer);
 			cout << "Movie deleted!" << endl;
 		}
 
@@ -220,8 +222,14 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 
 		system("PAUSE");
 		break;
-	
+
 	case 4:
+		r->show(r->WatchList);
+
+		system("PAUSE");
+		break;
+	
+	case 5:
 
 		g.Menu();
 
