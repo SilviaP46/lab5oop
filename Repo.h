@@ -22,7 +22,7 @@ public:
 	void search(string genre);
 	void create_list(string title, string genre, int year, int likes, string trailer);
 	void add_WatchList(Film f);
-	void remove_Movie(string title);
+	void remove_from_WatchList(string title);
 	~Repo();
 
 };

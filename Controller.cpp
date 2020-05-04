@@ -199,17 +199,28 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 			int poz = r->WatchList.size() - 1;
 			r->WatchList.at(poz).print();
 		}
-	/*
+	  
+		
+
 	case 3:
-		cout << "Would u like to give this film a like?"<<endl;
+		cout << "Which movie would you like to remove from the Watchlist?"<<endl;
 		cin >> title;
-		cout << "Tasta 1 = yes"<<endl;
-		cout << "Tasta 2 = no"<<endl;
-		cout << "Press Tasta = ";
+		if (r->exits(title, r->WatchList) == false)
+		{
+			cout << "This movie does not exist!" << endl;
+
+		}
+		else
+		{
+			r->remove_from_WatchList(title);
+			cout << "Movie deleted!" << endl;
+		}
+
+
+
 		system("PAUSE");
 		break;
-	*/
-
+	
 	case 4:
 
 		g.Menu();
