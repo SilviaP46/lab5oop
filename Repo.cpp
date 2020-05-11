@@ -32,7 +32,10 @@ bool Repo::exits_in_watch_list(string title)
 
 void Repo::add_Movie(Film f)
 {
+	if (this->exits_in_movie_list(f.get_Title()))
+		throw exception("Movie already exists");
 		Movie_List.push_back(f);
+
 }
 
 void Repo::delete_Movie(string title) {

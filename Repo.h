@@ -7,7 +7,7 @@ using namespace std;
 class Repo
 {
 private:
-	friend class Film;
+	//friend class Film;
 	vector<Film> Movie_List;
 	vector<Film> WatchList;
 public:
