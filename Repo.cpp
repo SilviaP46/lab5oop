@@ -5,10 +5,10 @@ using namespace std;
 
 Repo::Repo() {}
 
-bool Repo::exits(string title,vector<Film> v )
+bool Repo::exits_in_movie_list(string title)
 {
-	for (int i = 0; i < v.size(); i++) {
-		if (v.at(i).get_Title() == title)
+	for (int i = 0; i < Movie_List.size(); i++) {
+		if (Movie_List.at(i).get_Title() == title)
 		{
 			return true;
 			break;
@@ -16,6 +16,19 @@ bool Repo::exits(string title,vector<Film> v )
 	}
 	return false;
 }
+
+bool Repo::exits_in_watch_list(string title)
+{
+	for (int i = 0; i < WatchList.size(); i++) {
+		if (WatchList.at(i).get_Title() == title)
+		{
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+
 
 void Repo::add_Movie(Film f)
 {
@@ -43,11 +56,17 @@ void Repo::update_Movie_likes(string name,int p) {
 	}
 }
 
-void Repo::show(vector<Film> v) {
-	for (int i = 0; i < v.size(); i++)
-		cout << "Title: " << v.at(i).get_Title() << " Genre:" << v.at(i).get_Genre() << " Year:" << v.at(i).get_Year() << " Likes:" << v.at(i).get_Likes() << " Trailer" << v.at(i).get_Trailer() << endl;
+void Repo::print_movie_list() {
+	for (int i = 0; i < Movie_List.size(); i++)
+		cout << "Title: " << Movie_List.at(i).get_Title() << " Genre:" << Movie_List.at(i).get_Genre() << " Year:" << Movie_List.at(i).get_Year() << " Likes:" << Movie_List.at(i).get_Likes() << " Trailer" << Movie_List.at(i).get_Trailer() << endl;
 
 }
+
+void Repo::print_watch_list() {
+	for (int i = 0; i < WatchList.size(); i++)
+		cout << "Title: " << WatchList.at(i).get_Title() << " Genre:" << WatchList.at(i).get_Genre() << " Year:" << WatchList.at(i).get_Year() << " Likes:" << WatchList.at(i).get_Likes() << " Trailer" << WatchList.at(i).get_Trailer() << endl;
+}
+
 void Repo::search(string genre) {
 	for (int i = 0; i < Movie_List.size(); i++) {
 		if (Movie_List.at(i).get_Genre() == genre)
@@ -74,10 +93,10 @@ void Repo::create_list(string title, string genre, int year, int likes, string t
 
 
 
-void Repo::add_WatchList(Film f)
+void Repo::add_WatchList(string title)
 {
 	for (int i = 0; i <= Movie_List.size(); i++)
-		if (Movie_List.at(i).get_Title() == f.get_Title())
+		if (Movie_List.at(i).get_Title() == title)
 			WatchList.push_back(Movie_List.at(i));
 }
 

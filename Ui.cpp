@@ -10,6 +10,7 @@ Ui::Ui() {}
 void Ui::Menu() {
 
 	Controller c;
+	Repo r;
 
 	int choice;
 	do
@@ -22,16 +23,14 @@ void Ui::Menu() {
 		cout << "Your choice:";
 		cin >> choice;
 
-		c.ui_menu(choice);
+		c.ui_menu(choice,&r);
 
 	} while (choice != 0);
 
 }
 
-void Ui::Menu_Admin() {
+void Ui::Menu_Admin(Repo* r) {
 
-	Film f;
-	Repo r;
 	Controller c;
 
 	int choice;
@@ -48,16 +47,14 @@ void Ui::Menu_Admin() {
 		cout << "Your choice:";
 		cin >> choice;
 
-		c.ui_menu_Admin(choice, &r, f);
+		c.ui_menu_Admin(choice,r);
 
 	} while (choice != 0);
 
 }
 
-void Ui::Menu_User() {
+void Ui::Menu_User(Repo* r) {
 
-	Film f;
-	Repo r;
 	Controller c;
 
 	int choice;
@@ -74,7 +71,7 @@ void Ui::Menu_User() {
 		cout << "Your choice:";
 		cin >> choice;
 
-		c.ui_menu_User(choice, &r, f);
+		c.ui_menu_User(choice, r);
 
 	} while (choice != 0);
 

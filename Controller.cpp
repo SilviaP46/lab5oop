@@ -23,7 +23,7 @@ void innit_list() {
 
 }
 
-void Controller::ui_menu(int choice) {
+void Controller::ui_menu(int choice, Repo* r) {
 
 	Ui g;
 
@@ -41,7 +41,7 @@ void Controller::ui_menu(int choice) {
 
 	case 1:
 		
-		g.Menu_Admin();
+		g.Menu_Admin(r);
 
 		system("PAUSE");
 		break;
@@ -49,7 +49,7 @@ void Controller::ui_menu(int choice) {
 	case 2:
 
 		
-		g.Menu_User();
+		g.Menu_User(r);
 		
 		system("PAUSE");
 		break;
@@ -57,7 +57,7 @@ void Controller::ui_menu(int choice) {
 	
 }
 
-void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
+void Controller::ui_menu_Admin(int choice, Repo* r) {
 
 	Film* movie;
 	Ui g;
@@ -86,15 +86,16 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 		cin >> trailer;
 
 		movie = new Film(title, genre, year, likes, trailer);
-		if (r->exits(title,r->Movie_List))
+		if (r->exits_in_movie_list(title))
 		{
 			cout << "This movie already exits!" << endl;
 
 		}
 		else {
 			r->add_Movie(*movie);
-			int poz = r->Movie_List.size() - 1;
-			r->Movie_List.at(poz).print();
+			//int poz = r->Movie_List.size() - 1;
+			//r->Movie_List.at(poz).print();
+			r->print_movie_list();
 
 			delete movie;
 		}
@@ -107,7 +108,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 		cout << "Which movie would you like to delete?";
 		cin >> title;
 
-		if (r->exits(title,r->Movie_List) == false)
+		if (r->exits_in_movie_list(title) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 
@@ -128,7 +129,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 		cout << "New quantity of likes" << endl;
 		cin >> nr;
 
-		if (r->exits(title,r->Movie_List) == false)
+		if (r->exits_in_movie_list(title) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 
@@ -144,7 +145,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 
 	case 4:
 	 
-		r->show(r->WatchList);
+		r->print_watch_list();
 
 		system("PAUSE");
 		break;
@@ -159,8 +160,8 @@ void Controller::ui_menu_Admin(int choice, Repo* r, Film f) {
 }
 
 
-void Controller::ui_menu_User(int choice, Repo* r, Film f) {
-
+void Controller::ui_menu_User(int choice, Repo* r) {
+	
 	Film* movie;
 	Ui g;
 	int year, likes, op = choice, nr;
@@ -188,16 +189,17 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 	case 2:
 		cout << "Which movie would you like to add to your watchlist?" << endl;
 		cin >> title;
-		if (r->exits(title,r->WatchList))
+		if (r->exits_in_watch_list(title))
 		{
 			cout << "This movie already exits!" << endl;
 
 		}
 		else {
 
-			r->add_WatchList(f);
-			int poz = r->WatchList.size() - 1;
-			r->WatchList.at(poz).print();
+			r->add_WatchList(title);
+			//int poz = r->WatchList.size() - 1;
+			//r->WatchList.at(poz).print();
+			r->print_watch_list();
 		}
 	  
 		
@@ -207,7 +209,7 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 		cin >> title;
 		cout << "Did you like the movie?" << endl;
 		cin >> answer;
-		if (r->exits(title, r->WatchList) == false)
+		if (r->exits_in_watch_list(title) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 
@@ -224,7 +226,7 @@ void Controller::ui_menu_User(int choice, Repo* r, Film f) {
 		break;
 
 	case 4:
-		r->show(r->WatchList);
+		r->print_movie_list();
 
 		system("PAUSE");
 		break;
