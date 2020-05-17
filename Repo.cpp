@@ -72,12 +72,16 @@ void Repo::print_watch_list() {
 		cout << "Title: " << WatchList.at(i).get_Title() << " Genre:" << WatchList.at(i).get_Genre() << " Year:" << WatchList.at(i).get_Year() << " Likes:" << WatchList.at(i).get_Likes() << " Trailer" << WatchList.at(i).get_Trailer() << endl;
 }
 
-void Repo::search(string genre) {
+int Repo::search(string genre) {
+	int nr = 0;
 	for (int i = 0; i < Movie_List.size(); i++) {
 		if (Movie_List.at(i).get_Genre() == genre)
+		{
 			Movie_List.at(i).print();
+			nr++;
+		}
 	}
-			
+	return nr;
 
 }
 

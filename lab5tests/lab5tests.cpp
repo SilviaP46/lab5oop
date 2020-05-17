@@ -37,21 +37,32 @@ namespace lab5tests
 			Assert::IsFalse(r.exists_in_movie_list("frozen"));
 		}
 
+
+		TEST_METHOD(update_movie)
+		{
+			Repo r;
+			r.add_Movie(Film("frozen", "comedy", 2012, 12, "aaa"));
+			assert((r.update_Movie_likes("frozen",17)) == 17);
+			
+		}
+
+		TEST_METHOD(search)
+		{
+			Repo r;
+			r.add_Movie(Film("frozen", "comedy", 2012, 12, "aaa"));
+			r.add_Movie(Film("hello kitty", "comedy", 2012, 12, "aaa"));
+			r.add_Movie(Film("barbie", "thriller", 2012, 12, "aaa"));
+			r.add_Movie(Film("it", "horror", 2012, 12, "aaa"));
+			assert((r.search("comedy")) == 2);
+
+		}
+
 		TEST_METHOD(add_WatchList_exists)
 		{
 			Repo r;
 			r.add_Movie(Film("frozen", "comedy", 2012, 12, "aaa"));
 			r.add_WatchList("frozen");
 			Assert::ExpectException<exception>([&r]() {r.add_WatchList("frozen");});
-			
-		}
-
-		TEST_METHOD(update_movie)
-		{
-			Repo r;
-			r.add_Movie(Film("frozen", "comedy", 2012, 12, "aaa"));
-			assert((r.update_Movie_likes("frozen",1)) == 13);
-			
 		}
 
 	};
