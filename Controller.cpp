@@ -86,7 +86,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 		cin >> trailer;
 
 		movie = new Film(title, genre, year, likes, trailer);
-		if (r->exits_in_movie_list(title))
+		if (r->exists_in_movie_list(title))
 		{
 			cout << "This movie already exits!" << endl;
 
@@ -108,7 +108,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 		cout << "Which movie would you like to delete?";
 		cin >> title;
 
-		if (r->exits_in_movie_list(title) == false)
+		if (r->exists_in_movie_list(title) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 
@@ -129,7 +129,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 		cout << "New quantity of likes" << endl;
 		cin >> nr;
 
-		if (r->exits_in_movie_list(title) == false)
+		if (r->exists_in_movie_list(title) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 
@@ -137,7 +137,6 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 		else
 		{
 			r->update_Movie_likes(title,nr);
-			cout << "Movie deleted!" << endl;
 		}
 
 		system("PAUSE");
@@ -145,7 +144,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 
 	case 4:
 	 
-		r->print_watch_list();
+		r->print_movie_list();
 
 		system("PAUSE");
 		break;
@@ -189,7 +188,7 @@ void Controller::ui_menu_User(int choice, Repo* r) {
 	case 2:
 		cout << "Which movie would you like to add to your watchlist?" << endl;
 		cin >> title;
-		if (r->exits_in_watch_list(title))
+		if (r->exists_in_watch_list(title))
 		{
 			cout << "This movie already exits!" << endl;
 
@@ -203,13 +202,12 @@ void Controller::ui_menu_User(int choice, Repo* r) {
 		}
 	  
 		
-
 	case 3:
 		cout << "Which movie would you like to remove from the Watchlist?" << endl;
 		cin >> title;
 		cout << "Did you like the movie?" << endl;
 		cin >> answer;
-		if (r->exits_in_watch_list(title) == false)
+		if (r->exists_in_watch_list(title) == false)
 		{
 			cout << "This movie does not exist!" << endl;
 

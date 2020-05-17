@@ -5,7 +5,7 @@ using namespace std;
 
 Repo::Repo() {}
 
-bool Repo::exits_in_movie_list(string title)
+bool Repo::exists_in_movie_list(string title)
 {
 	for (int i = 0; i < Movie_List.size(); i++) {
 		if (Movie_List.at(i).get_Title() == title)
@@ -17,7 +17,7 @@ bool Repo::exits_in_movie_list(string title)
 	return false;
 }
 
-bool Repo::exits_in_watch_list(string title)
+bool Repo::exists_in_watch_list(string title)
 {
 	for (int i = 0; i < WatchList.size(); i++) {
 		if (WatchList.at(i).get_Title() == title)
@@ -32,7 +32,7 @@ bool Repo::exits_in_watch_list(string title)
 
 void Repo::add_Movie(Film f)
 {
-	if (this->exits_in_movie_list(f.get_Title()))
+	if (this->exists_in_movie_list(f.get_Title()))
 		throw exception("Movie already exists");
 		Movie_List.push_back(f);
 
@@ -49,14 +49,16 @@ void Repo::delete_Movie(string title) {
 	
 }
 
-void Repo::update_Movie_likes(string name,int p) {
+int Repo::update_Movie_likes(string name,int p) {
 	for (int i = 0; i < Movie_List.size(); i++) {
 		if (Movie_List.at(i).get_Title() == name) {
 			cout << "Old likes:" << Movie_List.at(i).get_Likes() << endl;
 			Movie_List.at(i).set_Likes(p);
 			cout << "New likes:" << Movie_List.at(i).get_Likes() << endl;
+			return Movie_List.at(i).get_Likes();
 		}
 	}
+	
 }
 
 void Repo::print_movie_list() {
@@ -97,7 +99,9 @@ void Repo::create_list(string title, string genre, int year, int likes, string t
 
 
 void Repo::add_WatchList(string title)
-{
+{ 
+	if (this->exists_in_watch_list(title))
+		throw exception("Movie already exists");
 	for (int i = 0; i <= Movie_List.size(); i++)
 		if (Movie_List.at(i).get_Title() == title)
 			WatchList.push_back(Movie_List.at(i));
