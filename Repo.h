@@ -19,6 +19,11 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	Repo();
+	void innit_list();
+	void print_to_file(Film f);
+	void print_list_to_file();
+	void clear_file();
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Exits in watch list. </summary>
@@ -105,26 +110,13 @@ public:
 
 	int search(string genre);
 
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	Creates a the movie_list. </summary>
+	/// <summary>	Adds a movie to the watch list. If movie exist, exception thrown. </summary>
 	///
 	/// <remarks>	Work, 11/05/2020. </remarks>
 	///
-	/// <param name="title">  	The title. </param>
-	/// <param name="genre">  	The genre. </param>
-	/// <param name="year">   	The year. </param>
-	/// <param name="likes">  	The likes. </param>
-	/// <param name="trailer">	The trailer. </param>
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void create_list(string title, string genre, int year, int likes, string trailer);
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	Adds a movie to the watch list. </summary>
-	///
-	/// <remarks>	Work, 11/05/2020. </remarks>
-	///
-	/// <param name="f">	A Film to process. </param>
+	/// <param name="title">	A Film to process. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void add_WatchList(string title);

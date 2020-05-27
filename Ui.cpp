@@ -43,7 +43,8 @@ void Ui::Menu_Admin(Repo* r) {
 		cout << "2-->Delete movie" << endl;
 		cout << "3-->Update number of likes" << endl;
 		cout << "4-->List of movies" << endl;
-		cout << "5-->Return to main menu!" << endl;
+		cout << "5-->Innit a list of movies" << endl;
+		cout << "6-->Return to main menu!" << endl;
 		cout << "Your choice:";
 		cin >> choice;
 

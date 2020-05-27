@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "C:\Users\Work\source\repos\lab6_oop\Validation.h"
 #include "Repo.h"
 #include "Film.h"
 #include "UI.h"
@@ -9,26 +10,13 @@ using namespace std;
 
 Controller::Controller() {}
 
-void innit_list() {
-	Repo f;
-	f.create_list("ana", "horror", 2004, 2991, "https://www.google.com/webhp?hl=ro&sa=X&ved=0ahUKEwjnxo6GjojpAhWUtXEKHX1JAycQPAgH");
-	f.create_list("asj", "comedie", 2009, 3647, "www.cs/1");
-	f.create_list("Iron", "comedie", 2013, 9585, "www.cs/2");
-	f.create_list("Captain", "actiune", 2017, 2141, "www.cs/3");
-	f.create_list("Conasu", "horror", 2019, 1235, "https://www.youtube.com/");
-	f.create_list("Eu", "thriller", 1999, 912, "www.cs/5");
-	f.create_list("Vremea", "aventura", 2005, 1257, "www.cs/6");
-	f.create_list("Singur!", "comedie", 2015, 4542, "www.cs/7");
-	f.create_list("Slab.", "dragoste", 2011, 1234, "www.cs/8");
 
-}
 
 void Controller::ui_menu(int choice, Repo* r) {
 
 	Ui g;
 
 	int op = choice;
-	innit_list();
 
 	switch (op) {
 
@@ -40,7 +28,7 @@ void Controller::ui_menu(int choice, Repo* r) {
 		system("PAUSE");
 
 	case 1:
-		
+
 		g.Menu_Admin(r);
 
 		system("PAUSE");
@@ -48,13 +36,13 @@ void Controller::ui_menu(int choice, Repo* r) {
 
 	case 2:
 
-		
+
 		g.Menu_User(r);
-		
+
 		system("PAUSE");
 		break;
+
 	}
-	
 }
 
 void Controller::ui_menu_Admin(int choice, Repo* r) {
@@ -63,6 +51,7 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 	Ui g;
 	int year, likes, op = choice,nr;
 	string title, trailer, genre;
+	Validation* v;
 
 	switch (op) {
 
@@ -76,6 +65,11 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 	case 1:
 		cout << "Please name the movie you wish to add!" << endl;
 		cin >> title;
+	//	if (v->check_string(title) == false)
+		//{
+		//	cout << "The title must only contain letters! Try Again!" << endl;
+		//	cin >> title;
+		//}
 		cout << "Genre?" << endl;
 		cin >> genre;
 		cout << "Year?" << endl;
@@ -149,8 +143,14 @@ void Controller::ui_menu_Admin(int choice, Repo* r) {
 		system("PAUSE");
 		break;
 
-
 	case 5:
+	
+		r->innit_list();
+
+		system("PAUSE");
+		break;
+
+	case 6:
 
 		g.Menu();
 	}
